@@ -17,7 +17,6 @@ function EditItemPage() {
       dispatch(userInfo(id));
     }, []);
   
-    // Get the user information from the Redux store
     const userInfoData = useSelector((state) => state.user.item);
   
     // Set the initial form values with user data
