@@ -1,24 +1,28 @@
 import logo from './logo.svg';
 import './App.css';
+import {Route,Routes} from 'react-router-dom';
+import NavBar from './components/Navbar';
+import AddItemPage from './pages/AddItemPage';
+import EditItemPage from './pages/EditItemPage';
+import HomePage from './pages/HomePage';
+import LoginPage from './pages/LoginPage';
+import SignupPage from './pages/SignupPage';
+import store from './redux/store'
+import { Provider } from 'react-redux';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+    <NavBar/>
+    <Routes>
+      <Route path='/' element={<HomePage/>}></Route>
+      <Route path='/signup' element={<SignupPage/>}></Route>
+      <Route path='/login' element={<LoginPage/>}></Route>
+      <Route path='/addItem' element={<AddItemPage/>}></Route>
+      <Route path='/editItem/:id' element={<EditItemPage/>}></Route>
+
+    </Routes>
+    </Provider>
   );
 }
 
