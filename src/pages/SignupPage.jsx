@@ -10,6 +10,11 @@ function SignupPage() {
     password:''
 })
 const [error, setError] = useState('');
+const [showPassword, setShowPassword] = useState(false);
+
+const handleShowPassword = () => {
+  setShowPassword(!showPassword);
+};
 const inputHandler = (e)=>{
     setInputField({...inputField,[e.target.name]:e.target.value})
 }
@@ -31,7 +36,7 @@ const inputHandler = (e)=>{
   return (
     <div>
       <h2>Signup</h2>
-       <LoginSignUpForm inputField={inputField} inputHandler={inputHandler} submitHandler={handleSignup}/>
+       <LoginSignUpForm inputField={inputField} inputHandler={inputHandler} submitHandler={handleSignup} showPassword={showPassword} handleShowPassword={handleShowPassword}/>
       
       {error && <p>{error}</p>}
     </div>

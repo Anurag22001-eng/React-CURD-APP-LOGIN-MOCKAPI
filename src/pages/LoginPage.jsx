@@ -9,6 +9,11 @@ function LoginPage({handleAccessToken}) {
         username:'',
         password:''
     })
+    const [showPassword, setShowPassword] = useState(false);
+
+  const handleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
     const [error, setError] = useState('');
     const inputHandler = (e)=>{
         setInputField({...inputField,[e.target.name]:e.target.value})
@@ -35,7 +40,7 @@ function LoginPage({handleAccessToken}) {
   return (
     <div>
       <h2>Login</h2>
-      <LoginSignUpForm inputField={inputField} inputHandler={inputHandler} submitHandler={handleLogin}/>
+      <LoginSignUpForm inputField={inputField} inputHandler={inputHandler} submitHandler={handleLogin} showPassword={showPassword} handleShowPassword={handleShowPassword}/>
       {error && <p>{error}</p>}
     </div>
   );
