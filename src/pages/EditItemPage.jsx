@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { userInfo, updateUser } from '../redux/allAction';
+import InputForm from '../components/InputForm';
 
 function EditItemPage() {
     const dispatch = useDispatch();
@@ -19,14 +20,12 @@ function EditItemPage() {
   
     const userInfoData = useSelector((state) => state.user.item);
   
-    // Set the initial form values with user data
     useEffect(() => {
-        console.log(userInfoData)
         if (userInfoData) {
           setInputField({
-            name: userInfoData[0].name || '',     // Provide a default value if 'name' is undefined
-            email: userInfoData[0].email || '',   // Provide a default value if 'email' is undefined
-            phone: userInfoData[0].phone || '',   // Provide a default value if 'phone' is undefined
+            name: userInfoData[0].name || '',    
+            email: userInfoData[0].email || '',  
+            phone: userInfoData[0].phone || '',  
           });
         }
       }, [userInfoData]);
@@ -38,54 +37,18 @@ function EditItemPage() {
         id:id,
         ...inputField
       }
-      console.log(newData)
       dispatch(updateUser(
         newData
       ))
       navigate('/')
     };
-  
+    const inputHandler = (e)=>{
+        setInputField({...inputField,[e.target.name]:e.target.value})
+    }
     return (
       <div>
         <h2>Edit User</h2>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor="name">Name:</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={inputField.name}
-              onChange={(e) => setInputField({ ...inputField, name: e.target.value })}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="email">Email:</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={inputField.email}
-              onChange={(e) => setInputField({ ...inputField, email: e.target.value })}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="phone">Phone:</label>
-            <input
-              type="tel"
-              id="phone"
-              name="phone"
-              value={inputField.phone}
-              onChange={(e) => setInputField({ ...inputField, phone: e.target.value })}
-              required
-            />
-          </div>
-          <div>
-            <button type="submit">Update</button>
-          </div>
-        </form>
+        <InputForm inputHandler={inputHandler} submitButton={handleSubmit} inputField={inputField}/>
       </div>
     );
   }

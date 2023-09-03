@@ -15,9 +15,6 @@ function AddItemPage() {
         email:'',
         phone:''
     })
-    useEffect(()=>{
-        console.log('callback changes',inputField)
-    },[inputField])
     const inputHandler = (e)=>{
         setInputField({...inputField,[e.target.name]:e.target.value})
     }
@@ -28,7 +25,7 @@ function AddItemPage() {
         navigate('/')
     }
   return (
-    <InputForm inputHandler={inputHandler} submitButton={submitButton} />
+    <InputForm inputField={inputField} inputHandler={inputHandler} submitButton={submitButton} />
   )
 }
 

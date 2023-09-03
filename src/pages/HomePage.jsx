@@ -5,12 +5,11 @@ import { useSelector } from 'react-redux/es/hooks/useSelector'
 import { useDispatch } from 'react-redux'
 import { deleteUser } from '../redux/allAction'
 
-function HomePage() {
+function HomePage({accessToken}) {
     const dispatch = useDispatch();
     const data = useSelector((state)=>{
         return state.user.items
     })
-    // const [data,setData] = useState(['asd'])
     const handleDelete = (id)=>{
         dispatch(deleteUser(id))
     }
@@ -28,7 +27,7 @@ function HomePage() {
     </tr>
   </thead>
   <tbody>
-        <UserList data={data} handleDelete={handleDelete}/>       
+        <UserList accessToken={accessToken} data={data} handleDelete={handleDelete}/>       
     
   </tbody>
 </table>

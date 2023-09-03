@@ -4,7 +4,12 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-function NavBar() {
+function NavBar({accessToken,handleAccessToken}) {
+  const logOut = ()=>{
+    localStorage.clear()
+    handleAccessToken()
+    alert('You are now logged out')
+  }
   return (
     <>
     <Navbar expand="lg" className="bg-body-tertiary">
@@ -14,9 +19,22 @@ function NavBar() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Link to='/' className='nav-link'>Home</Link>
-            <Link to='/addItem' className='nav-link'>Add Data</Link>
-            <Link to='/login' className='nav-link'>Login</Link>
+            
+            {accessToken?(
+              <>
+              <Link to="/" className="nav-link" onClick={()=>logOut()}>
+                    Logout
+              </Link>
+              <Link to='/addItem' className='nav-link'>Add Data</Link>
+              </>
+            ):
+            (
+              <>
+              <Link to='/login' className='nav-link'>Login</Link>
             <Link to='/signup' className='nav-link'>Signup</Link>
+              </>
+            )
+            }
           </Nav>
         </Navbar.Collapse>
       </Container>
