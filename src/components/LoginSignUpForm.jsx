@@ -1,6 +1,7 @@
 import React from 'react'
 
 function LoginSignUpForm({ inputField, inputHandler, submitHandler,showPassword,handleShowPassword }) {
+    
     return (
         <form onSubmit={submitHandler}>
             <div className="form-group">

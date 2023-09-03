@@ -34,7 +34,10 @@ const inputHandler = (e)=>{
   };
 
   return (
-    <div>
+    <div style={{
+        maxWidth: '300px', 
+        margin: '0 auto', 
+      }}>
       <h2>Signup</h2>
        <LoginSignUpForm inputField={inputField} inputHandler={inputHandler} submitHandler={handleSignup} showPassword={showPassword} handleShowPassword={handleShowPassword}/>
       

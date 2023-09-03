@@ -38,7 +38,10 @@ function LoginPage({handleAccessToken}) {
   };
 
   return (
-    <div>
+    <div style={{
+        maxWidth: '300px', 
+        margin: '0 auto', 
+      }}>
       <h2>Login</h2>
       <LoginSignUpForm inputField={inputField} inputHandler={inputHandler} submitHandler={handleLogin} showPassword={showPassword} handleShowPassword={handleShowPassword}/>
       {error && <p>{error}</p>}
