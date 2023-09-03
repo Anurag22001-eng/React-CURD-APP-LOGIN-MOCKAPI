@@ -20,7 +20,7 @@ const inputHandler = (e)=>{
 
     signup(inputField.username, inputField.password)
       .then((newUser) => {
-        alert('You are successfully registered');
+        alert(`${newUser.username} have successfully registered`);
         navigate('/login');
       })
       .catch((err) => {

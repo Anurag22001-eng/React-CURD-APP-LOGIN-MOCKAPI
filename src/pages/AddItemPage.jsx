@@ -1,8 +1,8 @@
-import {useEffect, useState} from 'react'
+import { useState} from 'react'
 import InputForm from '../components/InputForm'
 import shortid from 'shortid'
 import { useDispatch } from 'react-redux'
-import {addUser, deleteUser} from '../redux/allAction'
+import {addUser} from '../redux/allAction'
 import { useNavigate } from 'react-router-dom';
 
 

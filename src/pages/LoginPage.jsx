@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { login } from '../api/mockApi';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import LoginSignUpForm from '../components/LoginSignUpForm';
 function LoginPage({handleAccessToken}) {
     const navigate = useNavigate()
@@ -23,7 +23,7 @@ function LoginPage({handleAccessToken}) {
         const { user, accessToken } = response;
         localStorage.setItem('accessToken',accessToken)
         handleAccessToken()
-        alert('You have succecssfully logged in')
+        alert(`${user.username} have succecssfully logged in`)
         navigate('/')
         
       })
